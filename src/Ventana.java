@@ -1,11 +1,9 @@
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class Ventana extends JFrame {
 
 
     private List<String> values = Arrays.asList("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","");
-    private ArrayList <JButton> botonlist = new ArrayList<>();
+    private ArrayList <JButton> listaBotones = new ArrayList<>();
     private JButton b1 = new JButton();
     private JButton b2 = new JButton();
     private JButton b3 = new JButton();
@@ -69,22 +67,22 @@ public class Ventana extends JFrame {
         contentPane.setBackground(new Color(222, 184, 135));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        botonlist.add(b1);
-        botonlist.add(b2);
-        botonlist.add(b3);
-        botonlist.add(b4);
-        botonlist.add(b5);
-        botonlist.add(b6);
-        botonlist.add(b7);
-        botonlist.add(b8);
-        botonlist.add(b9);
-        botonlist.add(b10);
-        botonlist.add(b11);
-        botonlist.add(b12);
-        botonlist.add(b13);
-        botonlist.add(b14);
-        botonlist.add(b15);
-        botonlist.add(b16);
+        listaBotones.add(b1);
+        listaBotones.add(b2);
+        listaBotones.add(b3);
+        listaBotones.add(b4);
+        listaBotones.add(b5);
+        listaBotones.add(b6);
+        listaBotones.add(b7);
+        listaBotones.add(b8);
+        listaBotones.add(b9);
+        listaBotones.add(b10);
+        listaBotones.add(b11);
+        listaBotones.add(b12);
+        listaBotones.add(b13);
+        listaBotones.add(b14);
+        listaBotones.add(b15);
+        listaBotones.add(b16);
 
 
         setContentPane(contentPane);
@@ -258,8 +256,6 @@ public class Ventana extends JFrame {
         panel.add(b16);
         contentPane.add(panel);
 
-
-
         JPanel panel_2 = new JPanel();
         panel_2.setBackground(new Color(222, 184, 135));
         FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
@@ -299,30 +295,38 @@ public class Ventana extends JFrame {
     public void moverPieza(int lugar) {
         //derecha
         if(lugar-1>=0) {
-            if(botonlist.get(lugar-1).getText().equals("") && lugar-1!=3 && lugar-1!=7 && lugar-1!=11) {
-                botonlist.get(lugar-1).setText(botonlist.get(lugar).getText());
-                botonlist.get(lugar).setText("");
+            if(listaBotones.get(lugar-1).getText().equals("") && lugar-1!=3 && lugar-1!=7 && lugar-1!=11) {
+                listaBotones.get(lugar-1).setText(listaBotones.get(lugar).getText());
+                listaBotones.get(lugar).setText("");
             }}
         //izquierda
         if(lugar+1<=15) {
-            if(botonlist.get(lugar+1).getText().equals("") && lugar+1!=4 && lugar+1!=8 && lugar+1!=12 ) {
-                botonlist.get(lugar+1).setText(botonlist.get(lugar).getText());
-                botonlist.get(lugar).setText("");
+            if(listaBotones.get(lugar+1).getText().equals("") && lugar+1!=4 && lugar+1!=8 && lugar+1!=12 ) {
+                listaBotones.get(lugar+1).setText(listaBotones.get(lugar).getText());
+                listaBotones.get(lugar).setText("");
             }}
         //abajo
         if(lugar-4>=0) {
-            if(botonlist.get(lugar-4).getText().equals("")) {
-                botonlist.get(lugar-4).setText(botonlist.get(lugar).getText());
-                botonlist.get(lugar).setText("");
+            if(listaBotones.get(lugar-4).getText().equals("")) {
+                listaBotones.get(lugar-4).setText(listaBotones.get(lugar).getText());
+                listaBotones.get(lugar).setText("");
             }}
         //arriba
         if(lugar+4<=15) {
-            if(botonlist.get(lugar+4).getText().equals("")) {
-                botonlist.get(lugar+4).setText(botonlist.get(lugar).getText());
-                botonlist.get(lugar).setText("");
+            if(listaBotones.get(lugar+4).getText().equals("")) {
+                listaBotones.get(lugar+4).setText(listaBotones.get(lugar).getText());
+                listaBotones.get(lugar).setText("");
             }}
     }
 
+    public void ganar() {
+        if(b1.getText().equals("1") && b2.getText().equals("2") && b3.getText().equals("3") && b4.getText().equals("4") && b5.getText().equals("5") && b6.getText().equals("6")
+                && b7.getText().equals("7") && b8.getText().equals("8") && b9.getText().equals("9") && b10.getText().equals("10") && b11.getText().equals("11")
+                && b12.getText().equals("12") && b13.getText().equals("13") && b14.getText().equals("14") && b15.getText().equals("15")) {
+            JOptionPane.showMessageDialog(null, null,"Usted ha ganado", JOptionPane.INFORMATION_MESSAGE);
+            reinicio();
+        }
+    }
 
     public void reinicio(){
         Collections.shuffle(values);
